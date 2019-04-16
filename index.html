@@ -7,15 +7,26 @@
 <head>
 <title>Using turn.js and the new zoom feature</title>
 <meta name="viewport" content="width = 1050, user-scalable = no" />
-<script type="text/javascript" src="../../extras/jquery.min.1.7.js"></script>
-<script type="text/javascript" src="../../extras/modernizr.2.5.3.min.js"></script>
-<script type="text/javascript" src="../../lib/hash.js"></script>
+<script type="text/javascript" src="extras/jquery.min.1.7.js"></script>
+<script type="text/javascript" src="extras/modernizr.2.5.3.min.js"></script>
+<script type="text/javascript" src="lib/hash.js"></script>
+<style>
 
+#idtodo{
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	width: 100%;
+	height: 100%;
+	
+}
+
+</style>
 </head>
 <body>
-
+<div id="idtodo">
 <div id="canvas">
-
+</div>
 <div class="zoom-icon zoom-icon-in"></div>
 
 <div class="magazine-viewport">
@@ -38,6 +49,7 @@
 				<span>1</span>
 			</li>
 			<li class="d">
+				
 				<img src="pages/2-thumb.jpg" width="76" height="100" class="page-2">
 				<img src="pages/3-thumb.jpg" width="76" height="100" class="page-3">
 				<span>2-3</span>
@@ -66,9 +78,16 @@
 				<img src="pages/12-thumb.jpg" width="76" height="100" class="page-12">
 				<span>12</span>
 			</li>
+
+			<li class="i">
+					<img src="pages/13-thumb.jpg" width="76" height="100" class="page-13">
+					<span>13</span>
+				</li>
+
 		<ul>
 	<div>	
 </div>
+
 </div>
 
 <script type="text/javascript">
@@ -130,7 +149,7 @@ function loadApp() {
 					var book = $(this),
 					currentPage = book.turn('page'),
 					pages = book.turn('pages');
-			
+			console.log("aca "+ pages+"  "+ currentPage);
 					// Update the current URI
 
 					Hash.go('page/' + page).update();
@@ -168,8 +187,12 @@ function loadApp() {
 
 					// Add pages that aren't in the magazine
 
-					for (var i = 0; i < pages.length; i++)
+					for (var i = 0; i < 2; i++){
+						console.log( $(this));
 						addPage(pages[i], $(this));
+
+					}
+						
 
 				}
 			}
@@ -457,13 +480,13 @@ function loadApp() {
 
 yepnope({
 	test : Modernizr.csstransforms,
-	yep: ['../../lib/turn.js'],
-	nope: ['../../lib/turn.html4.min.js'],
-	both: ['../../lib/zoom.min.js', 'js/magazine.js', 'css/magazine.css'],
+	yep: ['lib/turn.js'],
+	nope: ['lib/turn.html4.min.js'],
+	both: ['lib/zoom.min.js', 'js/magazine.js', 'css/magazine.css'],
 	complete: loadApp
 });
 
 </script>
-
+</div>
 </body>
 </html>
